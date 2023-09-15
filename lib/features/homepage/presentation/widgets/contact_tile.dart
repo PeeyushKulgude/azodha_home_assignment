@@ -4,9 +4,27 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../bloc/contacts_bloc.dart';
 
+/// A Flutter widget that displays contact information in a card-like format.
+///
+/// The `ContactTile` widget is typically used within a list of contacts to
+/// display each contact's name and phone number along with edit and delete
+/// buttons.
 class ContactTile extends StatelessWidget {
+  /// The contact to display in the tile.
   final Contact contact;
+
+  /// Creates a new [ContactTile] with the given [contact].
+  ///
+  /// The [contact] parameter is required and represents the contact whose
+  /// information will be displayed by this tile.
   const ContactTile({super.key, required this.contact});
+
+  /// Converts a given input string into a color.
+  ///
+  /// This method takes an input string, calculates its hash code, converts the
+  /// hash code to a hexadecimal color code, and creates a [Color] object from
+  /// the hexadecimal code. The resulting color is used to customize the
+  /// appearance of the contact icon.
   Color stringToColor(String input) {
     int hashCode = input.hashCode;
 
@@ -51,8 +69,8 @@ class ContactTile extends StatelessWidget {
             IconButton(
               onPressed: () {
                 BlocProvider.of<ContactsBloc>(context).add(
-                            EditContactButtonPressedEvent(contact: contact),
-                          );
+                  EditContactButtonPressedEvent(contact: contact),
+                );
               },
               icon: const Icon(Icons.edit),
             ),

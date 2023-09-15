@@ -6,6 +6,11 @@ import 'package:lottie/lottie.dart';
 import '../../../add_contact/presentation/pages/add_contact.dart';
 import '../widgets/contact_tile.dart';
 
+/// A Flutter widget representing the main screen of the Contacts app.
+///
+/// The `HomePage` widget displays a list of contacts and provides options to
+/// add, edit, or delete contacts. It utilizes the `ContactsBloc` for managing
+/// the app's state related to contacts.
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -14,10 +19,12 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  // Create an instance of the ContactsBloc to manage contact-related state.
   final ContactsBloc contactsBloc = ContactsBloc();
 
   @override
   void initState() {
+    // Initialize the ContactsBloc and trigger the initial event.
     contactsBloc.add(ContactsInitialEvent());
     super.initState();
   }
@@ -36,6 +43,8 @@ class _HomePageState extends State<HomePage> {
         listenWhen: (previous, current) => current is ContactsActionState,
         buildWhen: (previous, current) => current is! ContactsActionState,
         listener: (BuildContext context, ContactsState state) {
+          // Listen for state changes and navigate to the AddContact page when
+          // triggered by the Bloc's actions.
           if (state is NavigateToAddContactPage) {
             showBottomSheet(
               context: context,
@@ -51,11 +60,13 @@ class _HomePageState extends State<HomePage> {
         },
         builder: (BuildContext context, ContactsState state) {
           if (state is ContactsLoading) {
+            // Display a loading indicator while contacts are being loaded.
             return const Center(
               child: CircularProgressIndicator(),
             );
           } else if (state is ContactsLoadedSuccess) {
             if (state.contacts.isEmpty) {
+              // Display a message and animation when there are no contacts.
               return Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -73,6 +84,7 @@ class _HomePageState extends State<HomePage> {
                 ],
               );
             }
+            // Display the list of contacts when contacts are loaded.
             return BlocProvider.value(
               value: contactsBloc,
               child: ListView.builder(
@@ -83,6 +95,7 @@ class _HomePageState extends State<HomePage> {
               ),
             );
           } else {
+            // Display an error message if something goes wrong.
             return const Center(
               child: Text("Something went wrong"),
             );
@@ -91,9 +104,10 @@ class _HomePageState extends State<HomePage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => contactsBloc.add(AddContactButtonPressedEvent()),
-        tooltip: 'Increment',
+        tooltip: 'Add Contact',
         child: const Icon(Icons.add),
       ),
     );
   }
 }
+
