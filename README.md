@@ -34,4 +34,19 @@ Once you have met the prerequisites, follow these steps to install any necessary
    cd /path/to/your/flutter_app
 
 3. Install app dependencies using the flutter pub get command:
+    ```bash
     flutter pub get
+
+## Running the App
+
+After installing the dependencies, you can run your Flutter app:
+
+1. Ensure you are in the project directory where your Flutter app is located.
+
+2. Use the flutter run command to start your app:
+    ```bash
+    flutter run
+
+3. Flutter will build the app and launch it on your connected device or emulator.
+
+4. You should see your app running in the device or emulator. Any changes you make to your code will automatically hot-reload into the running app, allowing you to see the results in real-time.
