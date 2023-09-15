@@ -6,7 +6,6 @@ This guide will walk you through the steps to run a Flutter app on your local de
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [Running the App](#running-the-app)
-- [Troubleshooting](#troubleshooting)
 
 ## Prerequisites
 
