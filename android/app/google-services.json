@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "317937380867",
+    "firebase_url": "https://contacts-b0ff4-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "contacts-b0ff4",
+    "storage_bucket": "contacts-b0ff4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:317937380867:android:20c2d473c7ff8c80afe836",
+        "android_client_info": {
+          "package_name": "com.example.contacts"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAec33QBLmwNRjvH0cCd-LTnHXPpjknLTw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
